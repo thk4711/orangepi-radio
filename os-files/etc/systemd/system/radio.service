@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/install/raspiradio/python
-ExecStart=/install/raspiradio/python/radio.py
+WorkingDirectory=/install/orangepi-radio/python
+ExecStart=/install/orangepi-radio/python/radio.py
 Restart=always
 RestartSec=10
 StartLimitInterval=30
