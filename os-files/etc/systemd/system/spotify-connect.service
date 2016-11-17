@@ -1,0 +1,15 @@
+[Unit]
+Description=Spotify Connect
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/install/spotify-connect-web/
+ExecStart=/install/spotify-connect-web/spotify-connect-web --bitrate 320 --name orange --playback_device softvol
+Restart=always
+RestartSec=10
+StartLimitInterval=30
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target

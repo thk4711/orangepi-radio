@@ -1,0 +1,64 @@
+# ~/.lircrc
+#
+# button: Name der Taster (wie angelernt)
+# prog:   Ziel, wohin die Information übergeben werden soll (Socket oder Programm)
+# config: uebergebener String
+ 
+# bench Remote
+# KEY_UP
+# KEY_DOWN
+# KEY_LEFT
+# KEY_RIGHT
+# KEY_ENTER
+# KEY_MENU
+# KEY_PLAYPAUSE
+ 
+begin
+    button = KEY_UP
+    prog = bench
+    config = KEY_UP
+end
+ 
+begin
+    button = KEY_DOWN
+    prog = bench
+    config = KEY_DOWN
+end
+ 
+begin
+    button = KEY_LEFT
+    prog = bench
+    config = KEY_LEFT
+    repeat = 2
+end
+ 
+begin
+    button = KEY_RIGHT
+    prog = bench
+    config = KEY_RIGHT
+    repeat = 2
+end
+ 
+begin
+    button = KEY_ENTER
+    prog = bench
+    config = KEY_ENTER
+end
+ 
+begin
+    button = KEY_MENU
+    prog = bench
+    config = KEY_MENU
+end
+
+begin
+    button = KEY_PLAYPAUSE
+    prog = bench
+    config = KEY_PLAYPAUSE
+end
+ 
+begin
+    button = KEY_PLAYPAUSE
+    prog = bench
+    config = KEY_PLAYPAUSE
+end

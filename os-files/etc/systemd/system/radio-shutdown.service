@@ -1,0 +1,18 @@
+###################################################
+# This service will start a scipt which is        #
+# shutting the device down on GPIO state change   #
+###################################################
+[Unit]
+Description=GPIO based save shutdown
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/install/raspiradio/python/shutdown.py
+Restart=always
+RestartSec=10
+StartLimitInterval=30
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target

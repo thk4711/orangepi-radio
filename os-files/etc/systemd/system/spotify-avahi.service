@@ -1,0 +1,14 @@
+[Unit]
+Description=Spotify Connect Zeroconf
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/avahi-publish-service orange _spotify-connect._tcp 4000 VERSION=1.0 CPath=/login/_zeroconf
+Restart=always
+RestartSec=10
+StartLimitInterval=30
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target

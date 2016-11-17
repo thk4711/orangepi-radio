@@ -1,0 +1,20 @@
+###################################################
+# This service will display an image on a frame   #
+# buffer as early as possible in the boot process #
+# it requires the fbi package                     #
+###################################################
+
+[Unit]
+Description=Display bootsplash
+DefaultDependencies=no
+After=local-fs.target
+Before=base.target
+
+[Service]
+type=oneshot
+User=root
+ExecStart=/usr/bin/fbi -T 2 -d /dev/fb1 --noverbose -a /install/raspiradio/Images/raspilogo.jpg
+RemainAfterExit=yes
+
+[Install]
+WantedBy=getty.target

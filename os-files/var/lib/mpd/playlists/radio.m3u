@@ -1,0 +1,23 @@
+#EXTM3U
+#EXTINF:-1,DRADIO WISSEN
+http://dradio_mp3_dwissen_m.akacast.akamaistream.net/7/728/142684/v1/gnl.akacast.akamaistream.net/dradio_mp3_dwissen_m
+#EXTINF:-1,Bayern 3
+http://br-mp3-bayern3-m.akacast.akamaistream.net/7/442/142692/v1/gnl.akacast.akamaistream.net/br_mp3_bayern3_m
+#EXTINF:-1,MDR Figaro
+http://c22033-ls.i.core.cdn.streamfarm.net/HZSKMnDUg9922033/22033mdr/live/app2128740352/w2128904193/live_de_128.mp3
+#EXTINF:-1,MDR INFO
+http://c22033-ls.i.core.cdn.streamfarm.net/QpZptC4ta9922033/22033mdr/live/app2128740352/w2128904192/live_de_128.mp3
+#EXTINF:-1,MDR JUMP
+http://c22033-ls.i.core.cdn.streamfarm.net/T3R6XGogC9922033/22033mdr/live/app2128740352/w2128904194/live_de_128.mp3
+#EXTINF:-1,MDR SPUTNIK
+http://c22033-ls.i.core.cdn.streamfarm.net/UjIe753Ui9922033/22033mdr/live/app2128740352/w2128904195/live_de_128.mp3
+#EXTINF:-1,SWR3
+http://swr-mp3-m-swr3.akacast.akamaistream.net/7/720/137136/v1/gnl.akacast.akamaistream.net/swr-mp3-m-swr3
+#EXTINF:-1,Deutschlandfunk
+http://dradio_mp3_dlf_m.akacast.akamaistream.net/7/249/142684/v1/gnl.akacast.akamaistream.net/dradio_mp3_dlf_m
+#EXTINF:-1,NDR2
+http://ndr-ndr2-hh-mp3.akacast.akamaistream.net/7/205/252764/v1/gnl.akacast.akamaistream.net/ndr_ndr2_hh_mp3
+#EXTINF:-1,823 Alternative
+http://streaming207.radionomy.com:80/823Alternative
+#EXTINF:-1,radionomy
+http://streaming208.radionomy.com:80/TheEndCanada

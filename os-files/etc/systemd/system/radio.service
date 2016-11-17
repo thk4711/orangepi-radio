@@ -1,0 +1,15 @@
+[Unit]
+Description=Radio
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/install/raspiradio/python
+ExecStart=/install/raspiradio/python/radio.py
+Restart=always
+RestartSec=10
+StartLimitInterval=30
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target
