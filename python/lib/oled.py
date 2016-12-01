@@ -68,6 +68,7 @@ class disp_content:
     volume        = 0
     mpd_stat      = ""
     wifi_icon     = ""
+    power_state   = ""
 
 # define display areas
 class last_disp_content:
@@ -83,6 +84,7 @@ class last_disp_content:
     volume        = 1
     mpd_stat      = " "
     wifi_icon     = ""
+    power_state   = ""
 
 
 # remember last position of scrolled text
@@ -150,9 +152,52 @@ def check_if_update_needed():
     return(needed)
 
 #-----------------------------------------------------------------#
+#  blank screen when power off                                    #
+#-----------------------------------------------------------------#
+def check_power_state():
+    if disp_content.power_state == "OFF":
+        if last_disp_content.power_state == "ON":
+            draw.rectangle(((0,0),(127,62)), fill=0, outline = 0)
+            disp.image(image)
+            disp.display()
+            disp_content.tonemode      = " "
+            disp_content.tonevalue     = 1
+            disp_content.time          = " "
+            disp_content.name          = " "
+            disp_content.artist        = " "
+            disp_content.title         = " "
+            disp_content.app_mode      = 1
+            disp_content.source_string = 1
+            disp_content.wifi          = 1
+            disp_content.volume        = 1
+            disp_content.mpd_stat      = " "
+            disp_content.wifi_icon     = ""
+        last_disp_content.power_state = disp_content.power_state
+        return(0)
+    else:
+        if last_disp_content.power_state == "OFF":
+            disp_content.tonemode      = " "
+            disp_content.tonevalue     = 1
+            disp_content.time          = " "
+            disp_content.name          = " "
+            disp_content.artist        = " "
+            disp_content.title         = " "
+            disp_content.app_mode      = 10
+            disp_content.source_string = 1
+            disp_content.wifi          = 1
+            disp_content.volume        = 1
+            disp_content.mpd_stat      = " "
+            disp_content.wifi_icon     = ""
+        last_disp_content.power_state = disp_content.power_state
+        return(1)
+
+#-----------------------------------------------------------------#
 #  update display                                                 #
 #-----------------------------------------------------------------#
 def update_display(now):
+    power_state = check_power_state()
+    if power_state == 0:
+        return None
     needed = check_if_update_needed()
     if needed == 0:
         return None

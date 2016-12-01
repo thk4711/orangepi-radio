@@ -12,13 +12,15 @@ LOW          = 0
 HIGH         = 1
 PUD_UP       = 2
 
-A_1_PIN      = 22            # 1st pin of 1st encoder
-B_1_PIN      = 23            # 2nd pin of 1st encoder
+A_1_PIN      = 23            # 1st pin of 1st encoder
+B_1_PIN      = 22            # 2nd pin of 1st encoder
 BTN_1_PIN	 = 24			 # button of 1st encoder
 
-A_2_PIN      = 4             # 1st pin of 2nd encoder
-B_2_PIN      = 5             # 2nd pin of 2nd encoder
+A_2_PIN      = 5             # 1st pin of 2nd encoder
+B_2_PIN      = 4             # 2nd pin of 2nd encoder
 BTN_2_PIN	 = 11			 # button of 2nd encoder
+
+POWER_PIN	 = 21			 # desired power state
 
 key_code            = None
 
@@ -33,6 +35,8 @@ encoder2PinALast    = LOW
 last_button_2_state = HIGH
 
 lirc_device = InputDevice('/dev/input/event5')
+
+Power_State = "ON"
 
 #-----------------------------------------------------------------#
 #       get the steps from encoder since last asked               #
@@ -83,11 +87,30 @@ def read_button_1():
 			key_code = "KEY_MENU"
 		last_button_1_state = n
 
+def read_button_2():
+	global last_button_2_state
+	global key_code
+	n = wiringpi.digitalRead(BTN_2_PIN)
+	if (n != last_button_2_state):
+		if (n == LOW):
+			key_code = "KEY_PLAYPAUSE"
+		last_button_2_state = n
+
+def read_power_button():
+	global Power_State
+	n = wiringpi.digitalRead(POWER_PIN)
+	if (n == LOW):
+		Power_State = "ON"
+	else:
+		Power_State = "OFF"
+
 def encoder_loop():
 	while True:
 		read_encoder_1()
 		read_encoder_2()
 		read_button_1()
+		read_button_2()
+		read_power_button()
 		time.sleep(0.003)
 
 #-----------------------------------------------------------------#
@@ -185,6 +208,9 @@ def init():
 	wiringpi.pullUpDnControl(B_2_PIN,PUD_UP)
 	wiringpi.pinMode(BTN_2_PIN,INPUT)
 	wiringpi.pullUpDnControl(BTN_2_PIN,PUD_UP)
+
+	wiringpi.pinMode(POWER_PIN,INPUT)
+	wiringpi.pullUpDnControl(POWER_PIN,PUD_UP)
 
 	thread.start_new_thread(encoder_loop, ())
 	thread.start_new_thread(keypressd, (lirc_device, ))

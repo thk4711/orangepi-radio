@@ -87,7 +87,8 @@ app_states  = {
                 "play"      : 1,
                 "app_mode"  : 0,
                 "tone_mode" : 0,
-                "changed"   : True
+                "changed"   : True,
+                "power"     : "ON"
               }
 
 prev_app_states  = {
@@ -101,7 +102,8 @@ prev_app_states  = {
                 "play"      : 100,
                 "app_mode"  : 100,
                 "tone_mode" : 100,
-                "changed"   : True
+                "changed"   : True,
+                "power"     : "ON"
               }
 
 # currently tuned station
@@ -370,6 +372,23 @@ def loop():
 
     tone_adjust(key_value)           # call tone adjust
 
+    display.disp_content.power_state = controls.Power_State
+
+    if prev_app_states["power"] != controls.Power_State:
+        if app_states["app_mode"] == app_modes.IRadio:
+            if controls.Power_State == "ON":
+                app_states["play"]=1
+                led = open("/sys/class/leds/green_led/brightness","w")
+                led.write(str(1))
+                led.close()
+                time.sleep(3)
+            else:
+                app_states["play"]=0
+                led = open("/sys/class/leds/green_led/brightness","w")
+                led.write(str(0))
+                led.close()
+        prev_app_states["power"] = controls.Power_State
+
     if key_value == "KEY_ENTER":    # switch tone mode
         switch_tone(now)
 
@@ -391,6 +410,7 @@ def loop():
 
     display.disp_content.tonemode  = tone_strings[app_states["tone_mode"]]
     display.disp_content.tonevalue = app_states[tone_mode_to_string[app_states["tone_mode"]]]
+    display.disp_content.app_mode = app_mode_strings[app_states["app_mode"]]
 
     get_wifi(now)
 
