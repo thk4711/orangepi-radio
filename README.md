@@ -19,3 +19,5 @@ After searching the for some time I cane to the conclusion that the best basis f
 The downside is clearly that there is a lot more and much better documentation on the Internet for the Raspberry PI. But since I knew what I was looking for (because I built such a device already with a Raspberry PI) I got everything working. And at the end I have to say it works as well as on the raspberry.
 
 So basically everything you need does cost less that 50$. Or if you want to connect it to active speakers or to an amplifier you do not need the power amplifier board and it will be less that 40$.
+
+Please see the [WIKI](https://github.com/thk4711/orangepi-radio/wiki) for details.
